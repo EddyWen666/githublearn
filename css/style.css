@@ -9,6 +9,27 @@
     visibility: hidden;
 }
 .clear{zoom:1;}
+a{
+    text-decoration: none;
+}
+div.otherdemo{
+    width: 1000px;
+    height: 30px;
+    margin: 0 auto;
+    text-align: left;
+}
+div.otherdemo span{
+    display: block;
+    float: left;
+    padding: auto 5px;
+}
+div.otherdemo ul li{
+    display: block;
+    float: left;
+    color: black;
+    margin-right: 5px;
+ 
+}
 div.dome{
 	float: left;
 	position: relative;
