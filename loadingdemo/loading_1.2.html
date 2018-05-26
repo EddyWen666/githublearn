@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面加载状态的CSS3进度条</title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <style>
+        .loading{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #fff;
+            z-index: 100;
+        }
+        .loading .loadpic{
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            top:0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin:auto;
+        }
+        .loading .loadpic i{
+            display: inline-block;
+            width:6px;
+            height: 30px;
+            margin: 2px auto;
+            background: #03a1ff;
+            -webkit-transform: scaleY(0.4);
+            -ms-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+            -webkit-animation: loadflash 1s infinite;
+            animation: loadflash 1s infinite;
+        }
+        .loading .loadpic i:nth-child(2){
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+        }
+        .loading .loadpic i:nth-child(3){
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
+        .loading .loadpic i:nth-child(4){
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+        .loading .loadpic i:nth-child(5){
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+        @-webkit-keyframes loadflash {
+            0%,40%,100%{-webkit-transform: scaleY(0.4);transform: scaleY(0.4)}
+            20%{-webkit-transform: scaleY(1);transform: scaleY(1)}
+        }
+        @keyframes loadflash {
+            0%,40%,100%{-webkit-transform: scaleY(0.4);transform: scaleY(0.4)}
+            20%{-webkit-transform: scaleY(1);transform: scaleY(1)}
+        }
+    </style>
+    <script>
+        document.onreadystatechange = function () {
+            //控制台输出页面加载状态
+            console.log(document.readyState);
+            if(document.readyState == "complete"){
+                $(".loading").fadeOut();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="loading">
+        <div class="loadpic">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+    <p>通过加载状态事件制作进度条<br>
+        1.document.onreadystatechange   页面加载状态改变时的事件；<br>
+        2.document.readyState    返回当前文档的状态； a.uninitialized 还未开始加载；b.loading  载入中；c.interactive 已加载，文档与用户可以开始交互；d.complete 载入完成；<br>
+
+    </p>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+</body>
+</html>

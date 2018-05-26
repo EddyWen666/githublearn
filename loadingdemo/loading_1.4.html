@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实时获取加载数据进度条</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+        .loading{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #fff;
+            z-index: 100;
+        }
+        .loading .loadpic{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top:0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+        .loading .loadpic span{
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top:10px;
+            left: 10px;
+            border-radius: 50%;
+            -webkit-box-shadow: 0 5px  3px #03a1ff;
+            box-shadow: 0 5px 3px #03a1ff;
+            -webkit-animation: run 1s 0s infinite linear;
+            animation: run 1s 0s infinite linear;
+        }
+        @-webkit-keyframes run {
+            0%{ -webkit-transform: rotate(0deg); transform: rotate(0deg)}
+            100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}
+        }
+        @keyframes run {
+            0%{ -webkit-transform: rotate(0deg); transform: rotate(0deg)}
+            100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}
+        }
+        .loading .loadpic i{
+            display: inline-block;
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top:10px;
+            left: 10px;
+            text-align: center;
+            line-height: 80px;
+            font-style: normal;
+            font-size: 25px;
+        }
+    </style>
+    <script>
+        $(function () {
+            var img = $("img");
+            var num = 0;
+            console.log(img);
+            img.each(function (index) {
+                var oImg = new Image();
+                
+                oImg.onload = function () {
+                    oImg.onload = null;
+                    num++;
+                    console.log("各图片索引：" + index);
+                    $(".loading i").html(parseInt(num/$("img").length*100) + "%");
+                    if(num >= $("img").length) {
+                        $(".loading").fadeOut();
+                    }
+                }
+                oImg.src = img[index].src;
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="loading">
+        <div class="loadpic">
+            <span></span>
+            <i>0%</i>
+        </div>
+    </div>
+    <h2>实时获取加载数据进度条 --知识点</h2>
+    <p>1.建立图像对象：图像对象名称 = new Image()</p>
+    <p>2.属性：border complete height ……</p>
+    <p>3.事件：onload onerror onkeydown onkeypress ……</p>
+    <p>4.src 属性一定要写到onload 的后面，否则程序在IE中会出错</p>
+    <header>
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685900&di=f48d594538c6823e48170ea466738e25&imgtype=0&src=http%3A%2F%2Fimgstore.cdn.sogou.com%2Fapp%2Fa%2F100540002%2F492265.jpg" alt="">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2609761047,1225651583&fm=27&gp=0.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685910&di=366912e418bada9673209e19a0f9faaa&imgtype=0&src=http%3A%2F%2Fpic3.16pic.com%2F00%2F39%2F97%2F16pic_3997160_b.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685904&di=a132458ca253af11c745ce4ca3b16ace&imgtype=0&src=http%3A%2F%2Fimg.daimg.com%2Fuploads%2Fallimg%2F110919%2F3-1109191F329249.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685903&di=729be3f9be7c156f88fdf32b34735256&imgtype=0&src=http%3A%2F%2Fpic8.nipic.com%2F20100719%2F3320946_123936086008_2.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685902&di=77243e801e3bf39797206340d6e952dd&imgtype=0&src=http%3A%2F%2Fscimg.jb51.net%2Fallimg%2F160109%2F14-160109114UM56.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+    </header>
+    <main>
+        <section class="banner">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685898&di=a12c5e9ac931e73807517e87ed9829b5&imgtype=0&src=http%3A%2F%2Fpic17.nipic.com%2F20111015%2F4695500_224140299162_2.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+        </section>
+        <section class="pro">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685896&di=5a0ec5d7e11106beb1b01c8db53a2edf&imgtype=0&src=http%3A%2F%2Fpic1.5442.com%2F2015%2F0526%2F12%2F03.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685896&di=0bec34cdd4f4e0b9c3a26bb63560ac17&imgtype=0&src=http%3A%2F%2Fpic13.nipic.com%2F20110318%2F2457331_195253062000_2.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685923&di=1d5b8fbab411ee42ed9d3765cc2282b8&imgtype=0&src=http%3A%2F%2Fpic18.nipic.com%2F20111223%2F9040884_155249347302_2.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685904&di=75fd3e2c3e880ccfdfb083b4eac120ea&imgtype=0&src=http%3A%2F%2Ffile03.16sucai.com%2F2017%2F1100%2F16sucai_p20161114018_103.JPG" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685907&di=4a68b2c4d430a87255b0dbc06fa59eca&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F8d5494eef01f3a29c84a4abf9e25bc315d607cc5.jpg" alt="">
+        </section>
+        <section class="content">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527141685909&di=4af29b63e2cf297457b55bd23efde504&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F26%2F81%2F06y58PICZcr_1024.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+        </section>
+    </main>
+
+    <footer>
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527080552276&di=6a30574c914598565868dc191ed5e1d5&imgtype=0&src=http%3A%2F%2Fimg04.tooopen.com%2Fimages%2F20130220%2Ftooopen_22124010.jpg" alt="">
+    </footer>
+</body>
+</html>
