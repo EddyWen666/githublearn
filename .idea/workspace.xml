@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d04e0d0-3efb-4681-899f-9ca09de9618b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/canvas/referdemo.html" afterDir="false" />
-    </list>
+    <list default="true" id="8d04e0d0-3efb-4681-899f-9ca09de9618b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,15 +14,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="firstTest" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/firstTest">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="referdemo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/canvas/referdemo.html">
           <provider selected="true" editor-type-id="text-editor" />
@@ -51,11 +40,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="397" />
-    <option name="y" value="29" />
-    <option name="width" value="1351" />
-    <option name="height" value="998" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="555" />
+    <option name="y" value="41" />
+    <option name="width" value="1311" />
+    <option name="height" value="809" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -97,6 +86,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GitHub\githublearn" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -119,17 +113,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1527301845430</updated>
-      <workItem from="1527301846974" duration="1379000" />
+      <workItem from="1527301846974" duration="1997000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1379000" />
+    <option name="totallyTimeSpent" value="1997000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="397" y="29" width="1351" height="998" extended-state="0" />
+    <frame x="555" y="41" width="1311" height="809" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35955057" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17683397" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
