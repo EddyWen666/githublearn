@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas倒计时案例</title>
+</head>
+<body>
+	<canvas id="timeCanvas" style="border: 1px solid #ccc;margin: 0 auto;display: block;">
+		抱歉，您当前浏览器暂不支持canvas动画！
+	</canvas>
+</body>
+<script type="text/javascript">
+	//获取canvas上下文
+	var canvas = document.getElementById("timeCanvas");
+	//设置画布的相关属性
+	canvas.width = 1024;
+	canvas.height = 768;
+	//设定上下文画图环境
+	ctx = canvas.getContext('2d');//所有画画的基础 获取画布上下文
+
+	//设定如何画  绘画状态 绘画路径   【注 canvas是更具绘制状态绘画的 所以涉及到多次绘画 就需要使用 beginPath() 和 closePath() ； 这两个不一定要一起存在；因为closePath 会将未闭合的绘画自动闭合】
+	ctx.beginPath();
+	ctx.moveTo(100,100);
+	ctx.lineTo(700,700);
+	ctx.lineTo(100,700);
+	ctx.lineTo(100,100);
+	ctx.closePath();
+	ctx.fillStyle = 'rgb(2,100,30)';
+	//执行画
+	ctx.fill();
+
+	ctx.lineWidth = 5;
+	ctx.strokeStyle = "red";
+	ctx.stroke(); //执行画
+
+	ctx.beginPath();
+	ctx.moveTo(300,50);
+	ctx.lineTo(400,100);
+	ctx.closePath();
+	ctx.lineWidth = 3;
+	ctx.strokeStyle = "black";
+	ctx.stroke();
+
+</script>
+</html>
