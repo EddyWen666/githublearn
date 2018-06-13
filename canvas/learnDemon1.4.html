@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon1.4</title>
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+		/*
+			注： 1.在绘制封闭多边形时候 用beginPath()和closePath()成对使用；以便收尾闭合
+			     2.在使用closePath() 后，可以省略最后一点为起始点的 lineTo();
+			     3.如何画制一个描边的填充块，先填充再画边；否则边的一半会被填充色覆盖；
+ 		*/
+
+ 		//图形路径
+		canvasContext.beginPath();
+		canvasContext.moveTo(100,350);
+		canvasContext.lineTo(500,350);
+		canvasContext.lineTo(500,200);
+		canvasContext.lineTo(700,400);
+		canvasContext.lineTo(500,600);
+		canvasContext.lineTo(500,450);
+		canvasContext.lineTo(100,450);
+		canvasContext.lineTo(100,350);
+		canvasContext.closePath();
+
+		//图形状态
+		canvasContext.lineWidth = 10;
+		canvasContext.strokeStyle = "red";
+		canvasContext.fillStyle = "yellow";
+
+		//执行绘制
+		canvasContext.fill();
+		canvasContext.stroke();
+
+	}
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon2.0</title>
+	<meta name="description" content="canvas线条样式详解之线条起始点：lineCap:butt（default)/round/square" />
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	//lineCap 只作用与线段的起始处，交接处无作用；
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		canvasContext.lineWidth = 10;
+		canvasContext.strokeStyle = "red";
+
+		canvasContext.beginPath();
+		canvasContext.moveTo(100,200);
+		canvasContext.lineTo(700,200);
+		canvasContext.lineCap = "but"; //没有帽子
+		canvasContext.stroke();
+		
+		canvasContext.beginPath();
+		canvasContext.moveTo(100,300);
+		canvasContext.lineTo(700,300);
+		canvasContext.lineCap = "round"; //圆形帽子
+		canvasContext.stroke();
+
+		canvasContext.beginPath();
+		canvasContext.moveTo(100,400);
+		canvasContext.lineTo(700,400);
+		canvasContext.lineCap = "square";//方形帽子	
+		canvasContext.stroke();
+
+	}
+</script>
+
+</html>

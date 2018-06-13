@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon3.2</title>
+	<meta name="description" content="canvas图形变换之变换矩阵- transform（） setTransform()" />
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		canvasContext.fillStyle = "red";
+		canvasContext.lineWidth = 5;
+		canvasContext.strokeStyle = "#058";
+		// //////////////////////////
+		// a c e
+		// b d f
+		// 0 0 1
+		// //////////////////////////
+		// a,d 水平，垂直缩放
+		// b,c 水平，垂直倾斜
+		// e,f 水平，垂直位移
+		// //////////////////////////
+		//transform(a,b,c,d,e,f) 是级联方法也就是每次变换都是在上次的变换基础之上继续变换；
+		//可以用 setTransform(a,b,c,d,e,f) 重新变换；
+		canvasContext.save();
+		canvasContext.transform(1,0,0,1,50,200);
+		canvasContext.transform(2,0,0,1.5,0,0);
+		canvasContext.transform(1,-0.2,-0.2,1,0,0);
+		canvasContext.setTransform(1,0,0,1,200,200);
+		canvasContext.fillRect(50,50,300,300);
+		canvasContext.strokeRect(50,50,300,300);
+		canvasContext.restore();
+
+		canvasContext.fill();
+		canvasContext.stroke();
+
+	}
+</script>
+
+</html>

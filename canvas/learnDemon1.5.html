@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon1.5</title>
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+		drawRect(canvasContext,100,100,200,200,10,"green","red");
+		drawRect2(canvasContext,200,200,200,200,10,"green","blue");
+		drawRect3(canvasContext,300,300,200,200,10,"green","rgba(0,256,0,0.5)");
+
+	}
+	/*
+	method:drawRect 绘制矩形方法
+	author:baker
+	time:2018.6.13
+	params:cxt ：
+		canvas上下文；
+		x y 起始坐标；
+		borderWidth:矩形边框宽度；
+		borderColor：矩形边框颜色；
+		fillColor:矩形填充颜色
+	*/
+	function drawRect(cxt,x,y,width,height,borderWidth,borderColor,fillColor){
+		cxt.beginPath();
+		cxt.moveTo(x,y);
+		cxt.lineTo(x + width,y);
+		cxt.lineTo(x + width,y + height);
+		cxt.lineTo(x,y + height)
+		cxt.closePath()
+
+		cxt.lineWidth = borderWidth;
+		cxt.strokeStyle = borderColor;
+		cxt.fillStyle = fillColor;
+
+		cxt.fill();
+		cxt.stroke();
+	}
+	function drawRect2(cxt,x,y,width,height,borderWidth,borderColor,fillColor){
+		cxt.beginPath();
+		cxt.rect(x,y,width,height);//canvas内置方法 构建矩形路径
+		cxt.closePath()
+
+		cxt.lineWidth = borderWidth;
+		cxt.strokeStyle = borderColor;
+		cxt.fillStyle = fillColor;
+
+		cxt.fill();
+		cxt.stroke();
+	}
+	function drawRect3(cxt,x,y,width,height,borderWidth,borderColor,fillColor){
+
+		cxt.lineWidth = borderWidth;
+		cxt.strokeStyle = borderColor;
+		cxt.fillStyle = fillColor;
+
+		cxt.fillRect(x,y,width,height);  //canvas内置方法  构建矩形路径 并根据当前图形状态 填充
+		cxt.strokeRect(x,y,width,height);//canvas内置方法  构建矩形路径 并根据当前图形状态 绘制矩形边框
+	}
+
+</script>
+
+</html>

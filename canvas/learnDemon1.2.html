@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon1.2</title>
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		canvasContext.moveTo(100,200); //画笔挪动到某个起始位置；
+		canvasContext.lineTo(300,400);
+		canvasContext.lineTo(100,600);
+
+		canvasContext.moveTo(300,200);
+		canvasContext.lineTo(500,400);
+		canvasContext.lineTo(300,600);
+
+		canvasContext.moveTo(500,200);
+		canvasContext.lineTo(700,400);
+		canvasContext.lineTo(500,600)
+
+		canvasContext.lineWidth = 5;
+		canvasContext.strokeStyle = "red";
+
+		canvasContext.stroke();
+
+	}
+</script>
+
+</html>

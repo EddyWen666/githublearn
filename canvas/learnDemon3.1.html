@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon2.0</title>
+	<meta name="description" content="canvas图形变换" />
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	//lineJoin 只作用与线段的交接处，起始无作用；
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 1200;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		//绘制j渐变天空
+		var linearGrad = canvasContext.createLinearGradient(0,0,0,canvas.width);
+		linearGrad.addColorStop(0.0,'black');
+		linearGrad.addColorStop(1.0,'#035');
+		canvasContext.fillStyle = linearGrad;
+		canvasContext.fillRect(0,0,canvas.width,canvas.height);
+
+		//绘制星星
+		for(var i = 0;i < 250;i ++) {
+			//随机大小星星
+			var R = Math.random()*5 + 5;
+			var x = Math.random()*canvas.width;
+			var y = Math.random()*canvas.height*0.65;
+			var a = Math.random()*360;
+			drawStar(canvasContext,x,y,R,a);
+		}
+
+		
+
+	}
+	/*
+	method:drawStar 绘制五角星方法
+	author:baker
+	time:2018.6.13
+	params:cxt ：
+		canvas上下文；
+		x y 距canvas画布原点偏移量；
+		R:为五角星外面五个点组成圆的半径；
+		rot;五角星旋转角度(顺时针)；
+	*/
+	function drawStar(cxt,x,y,R,rot){
+
+		//绘制出在（x,y)，大小为R，旋转角度为rot 的五角星
+		//……
+		cxt.save();
+
+		cxt.translate(x,y);
+		cxt.rotate(rot/180*Math.PI);
+		cxt.scale(R,R);
+		starPath(cxt);
+
+		cxt.fillStyle = "#fb3";
+		//cxt.strokeStyle = "#fb5";
+		//cxt.lineWidth = 3;
+		//cxt.lineJion = "round";
+
+
+		cxt.fill();
+		//cxt.stroke();
+		cxt.restore();
+
+
+	}
+
+	function starPath(cxt) {
+		cxt.beginPath();
+		for(var i = 0;i < 5;i ++){ //构建五角星的十个点
+			cxt.lineTo(Math.cos( (18 + i*72)/180 * Math.PI),
+								-Math.sin( (18+ i*72)/180 * Math.PI))
+			cxt.lineTo(Math.cos( (54 + i*72)/180 * Math.PI)*0.5,
+								-Math.sin( (54+ i*72)/180 * Math.PI)*0.5)			
+		}
+	}
+</script>
+
+</html>

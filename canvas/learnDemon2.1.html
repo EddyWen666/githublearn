@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon2.1</title>
+	<meta name="description" content="canvas线条样式详解 绘制五角星" />
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	//lineCap 只作用与线段的起始处，交接处无作用；
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		var R = 300;//五角星外圆半径
+		var r = 150;//五角星内圆半径
+		canvasContext = canvas.getContext("2d");
+
+
+/*		canvasContext.beginPath();
+
+		for(var i = 0;i < 5;i ++){ //构建五角星的十个点
+			canvasContext.lineTo(Math.cos( (18 + i*72)/180 * Math.PI)*R + canvas.width/2,
+								-Math.sin( (18+ i*72)/180 * Math.PI)*R + canvas.height/2)
+			canvasContext.lineTo(Math.cos( (54 + i*72)/180 * Math.PI)*r + canvas.width/2,
+								-Math.sin( (54+ i*72)/180 * Math.PI)*r + canvas.height/2)			
+		}
+		canvasContext.closePath();
+
+		canvasContext.lineWidth = 10;
+
+		canvasContext.stroke();*/
+
+		drawStar(canvasContext,r,R,canvas.width/2,canvas.height/2,10,"blue","red",0);
+
+	}
+	/*
+	method:drawStar 绘制五角星方法
+	author:baker
+	time:2018.6.13
+	params:cxt ：
+		canvas上下文；
+		r:为五角星里面五个点组成的圆的半径；
+		R:为五角星外面五个点组成圆的半径；
+		x y 距canvas画布原点偏移量；
+		borderWidth:五角星边框宽度；
+		borderColor：五角星边框颜色；
+		fillColor:五角星填充颜色；
+		rot;五角星旋转角度(顺时针)；
+	*/
+	function drawStar(cxt,r,R,x,y,borderWidth,borderColor,fillColor,rot){
+
+		cxt.strokeStyle = borderColor;
+		cxt.lineWidth = borderWidth;
+		cxt.fillStyle = fillColor;
+
+		cxt.beginPath();
+		for(var i = 0;i < 5;i ++){ //构建五角星的十个点
+			cxt.lineTo(Math.cos( (18 + i*72 - rot)/180 * Math.PI)*R + x,
+								-Math.sin( (18+ i*72- rot)/180 * Math.PI)*R + y)
+			cxt.lineTo(Math.cos( (54 + i*72- rot)/180 * Math.PI)*r + x,
+								-Math.sin( (54+ i*72- rot)/180 * Math.PI)*r + y)			
+		}
+		cxt.closePath();
+		cxt.fill();
+		cxt.stroke();
+
+	}
+</script>
+
+</html>
