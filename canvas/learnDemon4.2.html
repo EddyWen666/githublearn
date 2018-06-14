@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon4.2</title>
+	<meta name="description" content="canvas--fillStyle继续深入 使用图片画布或者video" />
+</head>
+<body>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		/*
+			createPattern(content,repeat-style); 
+			content:可以是图片(图片对象)也可以是canvas还可以是video   
+			repeat-style 填充方式(repeat/repeat-x/repeat-y)
+		*/
+
+		var backgroundImg = new Image();
+		backgroundImg.src = "../images/7.jpg";
+		backgroundImg.onload = function(){
+			var pattern = canvasContext.createPattern(backgroundImg,'repeat-y');
+			canvasContext.fillStyle = pattern;
+			canvasContext.fillRect(0,0,800,800);
+		}
+
+	}
+	
+</script>
+
+</html>

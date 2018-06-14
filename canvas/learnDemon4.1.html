@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>canvasLearnDamon4.0</title>
-	<meta name="description" content="canvas渐变色之--线性渐变 fillStyle深入" />
+	<title>canvasLearnDamon4.1</title>
+	<meta name="description" content="canvas渐变色之--径向渐变 fillStyle深入" />
 </head>
 <body>
 	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
@@ -17,19 +17,19 @@
 		canvasContext = canvas.getContext("2d");
 
 		/*
-		step1: var grd = canvasContext.createLinearGradient(xstart,ystart,xend,yend); //两个点确定渐变线
+		step1: var grd = canvasContext.createRadialGradient(x0,y0,r0,x1,y1,r1); //两个圆的圆点坐标及半径
 		//stop 浮点值，决定关键色的位置0.0位起始位置；1.0为终点位置；color 决定关键色的颜色
 		step2: grd.addColorStop(stop,color); 
 		step3: canvasContext.fillStyle = grd;
 		*/
 
-		var linearGrad = canvasContext.createLinearGradient(0,0,800,800);
-		linearGrad.addColorStop(0.0,'green');
-		linearGrad.addColorStop(0.25,'yellow');
-		linearGrad.addColorStop(0.5,'blue');
-		linearGrad.addColorStop(0.75,'gray');
-		linearGrad.addColorStop(1.0,'red');
-		canvasContext.fillStyle = linearGrad;
+		var radialGrad = canvasContext.createRadialGradient(400,400,100,400,400,500);
+		radialGrad.addColorStop(0.0,'green');
+		radialGrad.addColorStop(0.25,'yellow');
+		radialGrad.addColorStop(0.5,'blue');
+		radialGrad.addColorStop(0.75,'gray');
+		radialGrad.addColorStop(1.0,'red');
+		canvasContext.fillStyle = radialGrad;
 		canvasContext.fillRect(0,0,800,800);
 
 

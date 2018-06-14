@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon5.1</title>
+	<meta name="description" content="canvas--曲线绘制" />
+</head>
+<body>
+	<h1 style="text-align: center;">Canvas--圆角矩形绘制</h1>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+		canvasContext.lineWidth = 5;
+		canvasContext.strokeStyle = "red";
+		drawRoundRect(canvasContext,200,200,400,400,20);
+		
+
+	}
+	function drawRoundRect(cxt,x,y,width,height,radius){
+		cxt.save();
+		cxt.translate(x,y);
+		pathRoundRect(cxt,width,height,radius);
+		cxt.stroke();
+		cxt.restore();
+	}
+
+	function pathRoundRect(cxt,width,height,radius){
+		cxt.beginPath();
+
+		cxt.arc(width - radius,height - radius,radius,0,Math.PI/2);//右下角
+		cxt.lineTo(radius,height);//底边
+		cxt.arc(radius,height - radius,radius,Math.PI/2,Math.PI);//左下角
+		cxt.lineTo(0,radius);//左边
+		cxt.arc(radius,radius,radius,Math.PI,Math.PI*3/2);//左上角
+		cxt.lineTo(width - radius,0);//上边
+		cxt.arc(width - radius,radius,radius,Math.PI*3/2,Math.PI*2);//右上角
+		cxt.closePath(); //使用closePath  可默认闭合
+
+
+		cxt.closePath();
+	}
+</script>
+
+</html>

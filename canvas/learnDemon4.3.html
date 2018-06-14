@@ -2,43 +2,43 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>canvasLearnDamon2.0</title>
-	<meta name="description" content="canvas图形变换" />
+	<title>canvasLearnDamon4.3</title>
+	<meta name="description" content="canvas--fillStyle继续深入 使用图片画布或者video" />
 </head>
 <body>
 	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
-	
 </body>
 
 <script type="text/javascript">
-	//lineJoin 只作用与线段的交接处，起始无作用；
 	window.onload = function(){
 		var canvas = document.getElementById("canvasLine");
-		canvas.width = 1200;
+		canvas.width = 800;
 		canvas.height = 800;
 		canvasContext = canvas.getContext("2d");
 
-		//绘制j渐变天空
-		var linearGrad = canvasContext.createLinearGradient(0,0,0,canvas.width);
-		linearGrad.addColorStop(0.0,'black');
-		linearGrad.addColorStop(1.0,'#035');
-		canvasContext.fillStyle = linearGrad;
-		canvasContext.fillRect(0,0,canvas.width,canvas.height);
+		/*
+			createPattern(content,repeat-style); 
+			content:可以是图片(图片对象)也可以是canvas还可以是video   
+			repeat-style 填充方式(repeat/repeat-x/repeat-y)
+		*/
 
-		//绘制星星
-		for(var i = 0;i < 250;i ++) {
-			//随机大小星星
-			var R = Math.random()*5 + 5;
-			var x = Math.random()*canvas.width;
-			var y = Math.random()*canvas.height*0.65;
-			var a = Math.random()*360;
-			drawStar(canvasContext,x,y,R,a);
-		}
+		var backCanvas = createBackgroundCanvas();
 
-		
+		var pattern = canvasContext.createPattern(backCanvas,'repeat');
+		canvasContext.fillStyle = pattern;
+		canvasContext.fillRect(0,0,800,800);
+
 
 	}
-	/*
+	function createBackgroundCanvas() {
+		var backCanvas = document.createElement("canvas");
+		backCanvas.width = 100;
+		backCanvas.height = 100;
+		var backCanvasContext = backCanvas.getContext("2d");
+		drawStar(backCanvasContext,50,50,50,0);
+		return backCanvas;
+	}
+		/*
 	method:drawStar 绘制五角星方法
 	author:baker
 	time:2018.6.13
@@ -60,13 +60,8 @@
 		starPath(cxt);
 
 		cxt.fillStyle = "#fb3";
-		//cxt.strokeStyle = "#fb5";
-		//cxt.lineWidth = 3;
-		//cxt.lineJion = "round";
-
 
 		cxt.fill();
-		//cxt.stroke();
 		cxt.restore();
 
 
@@ -81,6 +76,7 @@
 								-Math.sin( (54+ i*72)/180 * Math.PI)*0.5)			
 		}
 	}
+	
 </script>
 
 </html>

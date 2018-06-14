@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon5.2</title>
+	<meta name="description" content="canvas--曲线绘制" />
+</head>
+<body>
+	<h1 style="text-align: center;">Canvas--2048游戏盘绘制</h1>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 800;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		fillRoundRect(canvasContext,150,150,500,500,10,"#bbada0");
+		for(var i = 0;i < 4;i ++){
+			for(var j = 0;j < 4;j ++){
+				fillRoundRect(canvasContext,170 + i * 120,170 + j*120,100,100,6,"#ccc0b3");
+			}
+		}		
+
+	}
+	function fillRoundRect(cxt,x,y,width,height,radius,/*optional*/fillColor){
+		if(2*radius > width || 2*radius > height){
+			return;
+		}
+		cxt.save();
+		cxt.translate(x,y);
+		pathRoundRect(cxt,width,height,radius);
+		cxt.fillStyle = fillColor || "black";
+		cxt.fill();
+		cxt.restore();
+	}
+
+	function strockRoundRect(cxt,x,y,width,height,radius,/*optional*/lineWidth,/*optional*/strokeColor){
+		if(2*radius > width || 2*radius > height){
+			return;
+		}
+
+		cxt.save();
+		cxt.translate(x,y);
+		pathRoundRect(cxt,width,height,radius);
+		cxt.lineWidth = lineWidth || 1;
+		cxt.strokeStyle = strokeColor || "black";
+		cxt.stroke();
+		cxt.restore();
+		
+	}
+
+	function pathRoundRect(cxt,width,height,radius){
+		cxt.beginPath();
+
+		cxt.arc(width - radius,height - radius,radius,0,Math.PI/2);//右下角
+		cxt.lineTo(radius,height);//底边
+		cxt.arc(radius,height - radius,radius,Math.PI/2,Math.PI);//左下角
+		cxt.lineTo(0,radius);//左边
+		cxt.arc(radius,radius,radius,Math.PI,Math.PI*3/2);//左上角
+		cxt.lineTo(width - radius,0);//上边
+		cxt.arc(width - radius,radius,radius,Math.PI*3/2,Math.PI*2);//右上角
+		cxt.closePath(); //使用closePath  可默认闭合
+
+
+		cxt.closePath();
+	}
+</script>
+
+</html>

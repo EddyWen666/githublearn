@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon5.3</title>
+	<meta name="description" content="canvas--曲线绘制" />
+</head>
+<body>
+	<h1 style="text-align: center;">Canvas--曲线绘制之arcTo()函数</h1>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 1000;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		/*
+		绘制一段弧
+		x0,y0：画笔起始点
+		x1,y1：直角点
+		x2,y2：弧切线上的点【注：并非弧线的终点】
+		radius：弧半径
+		context.arcto(x0,y0,x1,y1,x2,y2,radius) 
+		*/
+		arctoTest(canvasContext,150,100,650,100,650,600,100);
+
+	}
+
+	function arctoTest(cxt,x0,y0,x1,y1,x2,y2,r){
+		cxt.beginPath();
+		cxt.moveTo(x0,y0);
+		cxt.arcTo(x1,y1,x2,y2,r);
+		cxt.lineWidth = 5;
+		cxt.strokeStyle = "red";
+		cxt.stroke();
+
+		//辅助线
+		cxt.beginPath();
+		cxt.moveTo(x0,y0);
+		cxt.lineTo(x1,y1);
+		cxt.lineTo(x2,y2);
+
+		cxt.lineWidth = 2;
+		cxt.strokeStyle = "gray";
+		cxt.stroke();
+	}
+</script>
+
+</html>

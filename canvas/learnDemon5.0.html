@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvasLearnDamon5.0</title>
+	<meta name="description" content="canvas--曲线绘制" />
+</head>
+<body>
+	<h1 style="text-align: center;">Canvas--曲线绘制之arc()函数</h1>
+	<canvas id="canvasLine" style="border: 1px solid #aaa;display: block;margin: 50px auto;">对不起！您当前使用的浏览器不支持Canvas,建议请使用Google浏览器！</canvas>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var canvas = document.getElementById("canvasLine");
+		canvas.width = 1000;
+		canvas.height = 800;
+		canvasContext = canvas.getContext("2d");
+
+		/*
+		绘制一段弧
+		centerx,centery：圆心
+		radius：半径
+		startingAngle：起始角度 （弧度计）
+		endingAngle：结束角度（弧度计）
+		anticlockwise：是否为逆时针（默认为false，即默认为顺时针）
+		context.arc(centerx,centery,radius,startingAngle,endingAngle,anticlockwise=false) 
+		*/
+		canvasContext.lineWidth = 5;
+		canvasContext.strokeStyle = "blue";
+
+		//1.顺时针绘制 10个弧
+		for(var i = 0;i < 10;i ++){
+			canvasContext.beginPath();
+			canvasContext.arc(50 + i*100,60,40,0,2*Math.PI*(i+1)/10);
+			canvasContext.stroke();
+		}
+
+		//2.顺时针绘制 10个弧(闭合--> colsePath() 终止路径)
+		for(var i = 0;i < 10;i ++){
+			canvasContext.beginPath();
+			canvasContext.arc(50 + i*100,180,40,0,2*Math.PI*(i+1)/10);
+			canvasContext.closePath();
+			canvasContext.stroke();
+		}
+
+		//3.逆时针绘制 10个弧
+		for(var i = 0;i < 10;i ++){
+			canvasContext.beginPath();
+			canvasContext.arc(50 + i*100,360,40,0,2*Math.PI*(i+1)/10,true);
+			canvasContext.stroke();
+		}
+
+		//4.逆时针绘制 10个弧(闭合--> colsePath() 终止路径)
+		for(var i = 0;i < 10;i ++){
+			canvasContext.beginPath();
+			canvasContext.arc(50 + i*100,480,40,0,2*Math.PI*(i+1)/10,true);
+			canvasContext.closePath();
+			canvasContext.stroke();
+		}
+		
+		canvasContext.fillStyle = "red";
+		//5.顺时针绘制 10个填充圆
+		for(var i = 0;i < 10;i ++){
+			canvasContext.beginPath();
+			canvasContext.arc(50 + i*100,600,40,0,2*Math.PI*(i+1)/10);
+			canvasContext.closePath();
+			canvasContext.fill();
+		}
+
+		//6.逆时针绘制 10个填充圆
+		for(var i = 0;i < 10;i ++){
+			canvasContext.beginPath();
+			canvasContext.arc(50 + i*100,720,40,0,2*Math.PI*(i+1)/10,true);
+			canvasContext.fill();
+		}		
+
+
+
+	}
+
+	
+</script>
+
+</html>
